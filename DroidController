@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class Droid {
+    // Instance variables
+    int batteryLevel;
+    String name;
+
+    // Constructor to initialize the droid's name
+    public Droid(String droidName) {
+        name = droidName;
+        batteryLevel = 100; // Initialize battery level to maximum
+    }
+
+    // Method to display droid information
+    public String toString() {
+        return "Hello, I'm the droid: " + name + ". My current battery level is: " + batteryLevel;
+    }
+
+    // Method to perform a task
+    public void performTask(String task) {
+        // Check if the droid has enough battery level to perform the task
+        if (batteryLevel > 10) {
+            System.out.println(name + " is performing task: " + task);
+            batteryLevel -= 10; // Reduce battery level after performing task
+        } else {
+            System.out.println(name + " doesn't have enough battery to perform the task.");
+            System.out.println("Please recharge " + name + " to continue.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the droid's name
+        System.out.println("Welcome to the Droid Control Center!");
+        System.out.println("Please enter the name of your first droid:");
+        String droid1Name = scanner.nextLine();
+        System.out.println("Please enter the name of your second droid:");
+        String droid2Name = scanner.nextLine();
+
+        // Create droid objects
+        Droid droid1 = new Droid(droid1Name);
+        Droid droid2 = new Droid(droid2Name);
+
+        // Display droid information
+        System.out.println(droid1);
+        System.out.println(droid2);
+
+        // Perform tasks with droids
+        System.out.println("Let's make our droids perform some tasks!");
+        System.out.println("Enter a task for " + droid1Name + ":");
+        String task1 = scanner.nextLine();
+        droid1.performTask(task1);
+
+        System.out.println("Enter a task for " + droid2Name + ":");
+        String task2 = scanner.nextLine();
+        droid2.performTask(task2);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
